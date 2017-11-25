@@ -4,8 +4,6 @@
     <list default="true" id="95815024-6785-4f71-acd9-e8cb6f821d5d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/postercontroller.js" afterPath="$PROJECT_DIR$/controllers/postercontroller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/poster.js" afterPath="$PROJECT_DIR$/routes/poster.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,8 +20,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -201,12 +199,12 @@
       <updated>1511610336723</updated>
       <workItem from="1511610338310" duration="251000" />
       <workItem from="1511611464623" duration="5963000" />
-      <workItem from="1511624052657" duration="6918000" />
+      <workItem from="1511624052657" duration="7483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13132000" />
+    <option name="totallyTimeSpent" value="13697000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="6" y="23" width="1414" height="837" extended-state="0" />
@@ -364,8 +362,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding />
         </state>
       </provider>
