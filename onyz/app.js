@@ -22,8 +22,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+// app.use('/', index);
+app.use('/storer', users);
+
+app.use('/hello', function(req, res){
+    res.send("Welcome to the onyx api");
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,5 +46,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(3000)
 
 module.exports = app;

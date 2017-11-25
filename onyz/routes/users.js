@@ -1,9 +1,11 @@
 var express = require('express');
+var mongoose = require('mongoose');
+var schema = mongoose.Schema
 var router = express.Router();
+var storercontroller = require('../controllers/storercontroller');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
+router.post('/storersetup', storercontroller.setupstorer);
 
 module.exports = router;
