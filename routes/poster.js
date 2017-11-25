@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var postercontroller = require('../controllers/postercontroller')
 
 router.post('/postercheck', postercontroller.checkposter);
-router.get('/postfile', postercontroller.postfile)
+router.post('/postfile', postercontroller.postfile);
+router.post('/randomjsongenerate', postercontroller.randomdatagenerate);
 
 module.exports = router;

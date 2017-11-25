@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var poster = require('./routes/poster');
 
-const port = process.env.PORT|| 8000
+const port = 3000
 var app = express();
 
 // view engine setup
