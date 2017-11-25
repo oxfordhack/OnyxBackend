@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var poster = require('./routes/poster');
 
 var app = express();
 
@@ -24,11 +25,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', index);
 app.use('/storer', users);
+app.use('/poster', poster);
 
 app.use('/hello', function(req, res){
     res.send("Welcome to the onyx api");
 });
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

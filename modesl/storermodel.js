@@ -3,7 +3,8 @@ const schema = mongoose.Schema
 
 const fileSchema = new schema({
     size: {type: Number, required: true},
-    fileid: {type: String, required: true}
+    filename: {type: String, required: true},
+    encrypt: {type: String, required: false}
 })
 
 const storerSchema = new schema({
@@ -12,5 +13,5 @@ const storerSchema = new schema({
     files: {type: [fileSchema], required: false}
 }, {collection: 'storers'});
 
-module.exports = mongoose.model('file', fileSchema);
 module.exports = mongoose.model('storer', storerSchema);
+module.exports = mongoose.model('file', fileSchema);
