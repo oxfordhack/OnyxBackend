@@ -1,4 +1,6 @@
 import json
+import sys
+# import main
 
 sample_data1 = {
             "_id": "5a19900acfbb9200146c31f5",
@@ -102,4 +104,9 @@ def return_optimal_id(candiates):
 				ans_dict[query_candidate(i)[0]] = json.loads(i)["phoneID"]
 		return ans_dict[max_available]
 
-print return_optimal_id(json_list)
+# print return_optimal_id(json_list)
+# print sys.argv[1]
+
+if __name__ == '__main__':
+		arg = sys.argv[1:]
+		return_optimal_id(arg)
