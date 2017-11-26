@@ -78,14 +78,6 @@ exports.postfile = function(req, res) {
             encryptedfile: ciphertext
         });
 
-        const filelocationref = req.body['filename']
-
-        var payload = {
-            data: {
-                filename: filelocationref
-            }
-        };
-
         // GRAB THE ENCRPYTED IMAGE
 
         //CREATE THE NOTIFICATION SCHEMA
@@ -99,6 +91,8 @@ exports.postfile = function(req, res) {
             timetolive: 24 * 60 * 60
         }
 
+        const filelocationref = req.body['filename']
+
         //CHOOSE THE PERSON WHO HAVE THE MOST MEMORY AVAILABLE WITH THE PYTHON SCRIPT
 
         storers.find({},function(err, body) {
@@ -110,8 +104,15 @@ exports.postfile = function(req, res) {
 
                 //AFTER YOU FINISH THIS PART THEN CONTINUE MAKING IT MORE ELABORATE
                 const objects = body[0]
-                console.log(objects)
+                // console.log(objects)
                 var notifytoken  = objects['phoneID']
+                var payload = {
+                    data: {
+                        filename: filelocationref
+                    }
+                };
+
+                console.log(payload)
 
                 //NOW DO NOTIFICATIONS IN CALLBACK, THEN ADD THE FILE INSTANCE WE MADE ABOVE TO IT
 
