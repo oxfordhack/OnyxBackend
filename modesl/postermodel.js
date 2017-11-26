@@ -4,7 +4,7 @@ const file = require('./filesmodel')
 
 var posterschema = new schema({
     uid: {type: String, required: true},
-    files: {type: [file.ObjectId]}
+    files: [{type: String, required: false, default: []}]
 })
 
 module.exports = mongoose.model('poster', posterschema);

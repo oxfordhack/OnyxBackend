@@ -1,5 +1,6 @@
 import json
 import sys
+import requests
 # import main
 
 sample_data1 = {
@@ -85,28 +86,37 @@ sample_data3 = {
 
 json_list = [json.dumps(sample_data1), json.dumps(sample_data2), json.dumps(sample_data3)]
 
+def sendRequest(url, paramas):
+    r = requests.post(url, data=paramas)
+    print(r)
 
 def query_candidate(candidates_JSON):
-		dict = json.loads(candidates_JSON)  # convert json into dictionary
-		max = dict["allocatedmemory"]
-		used_space = 0
-		for i in range(len(dict["files"])):
-				used_space += dict["files"][i]["size"]
-		empty_space = max - used_space
-		return empty_space, used_space
+    dict = json.loads(candidates_JSON)  # convert json into dictionary
+    max = dict["allocatedmemory"]
+    used_space = 0
+    for i in range(len(dict["files"])):
+            used_space += dict["files"][i]["size"]
+    empty_space = max - used_space
+    return empty_space, used_space
 
 def return_optimal_id(candiates):
-		max_available = query_candidate(candiates[0])[0]
-		ans_dict = {}
-		for i in candiates:
-				if max_available < query_candidate(i)[0]:
-						max_available = query_candidate(i)[0]
-				ans_dict[query_candidate(i)[0]] = json.loads(i)["phoneID"]
-		return ans_dict[max_available]
+    max_available = query_candidate(candiates[0])[0]
+    print(max_available)
+    ans_dict = {}
+    for i in candiates:
+            if max_available < query_candidate(i)[0]:
+                    max_available = query_candidate(i)[0]
+            ans_dict[query_candidate(i)[0]] = json.loads(i)["phoneID"]
+    
+    print(ans_dict[max_available])
+    sys.stdout.flush()
+#        sendRequest('localhost:3000/storer/suitablestorerID', ans_dict[max_available])
 
 # print return_optimal_id(json_list)
 # print sys.argv[1]
-
+#
 if __name__ == '__main__':
-		arg = sys.argv[1:]
-		return_optimal_id(arg)
+        arg = sys.argv[1]
+        return_optimal_id(arg)
+#        sys.stdout.flush()
+
