@@ -6,11 +6,11 @@ var filenames = require('../modesl/filesmodel');
 var notify = require('../modesl/notificationmodel');
 const crypto = require('crypto-js');
 var admin = require("firebase-admin");
-var serviceAccount = require("../onyx-2d4dc-firebase-adminsdk-4gtfl-3b41ca92d7.json");
+var serviceAccount = require("../onyxnotify-firebase-adminsdk-o9vvb-22b29ebf32.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://onyx-2d4dc.firebaseio.com"
+    databaseURL: "https://onyxnotify.firebaseio.com"
 });
 
 var router = express.Router();
@@ -56,16 +56,32 @@ exports.postfile = function(req, res) {
     }else {
         console.log(req.body)
         //FILE INSTANCE
-        const fileinstance = new filenames({
-            size: req.body['filesize'],
-            filename: req.body['filename']
-        });
-
-        // GRAB THE ENCRPYTED IMAGE
 
         var imagebinary = req.body['base64StrImage']
         const uid = req.body['uid']
         var ciphertext = crypto.AES.encrypt(JSON.stringify(imagebinary), secretkey);
+
+        const fileinstance = new filenames({
+            size: req.body['filesize'],
+            filename: req.body['filename'],
+            encryptedfile: ciphertext
+        });
+
+        const filelocationref = req.body['filename']
+
+        const jsonPayload = {
+            "notification":{
+                "title": " ",
+                "body": " ",
+                "mutable_content": "true"
+            },
+            "data" : {
+                "payload" : filelocationref
+            }
+        };
+
+        // GRAB THE ENCRPYTED IMAGE
+
 
         //CREATE THE NOTIFICATION SCHEMA
         const notification = new notify({
@@ -89,14 +105,7 @@ exports.postfile = function(req, res) {
 
                 //NOW DO NOTIFICATIONS IN CALLBACK, THEN ADD THE FILE INSTANCE WE MADE ABOVE TO IT
 
-                var payload = {
-                    data: {
-                        encryption: notification['encrypted'],
-                        filename: notification['filename']
-                    }
-                };
-
-                admin.messaging().sendToDevice(notifytoken, payload)
+                admin.messaging().sendToDevice(notifytoken, jsonPayload)
                     .then(function(response) {
                         console.log("Successfully sent message:", response);
                         // now do the other shit
