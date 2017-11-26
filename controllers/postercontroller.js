@@ -22,7 +22,7 @@ var options = {
     production: false
 };
 
-var apnProvider = new apn.Provider(options);
+// var apnProvider = new apn.Provider(options);
 
 var router = express.Router();
 const secretkey = 'qwerty';
