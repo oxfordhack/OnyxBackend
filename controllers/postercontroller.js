@@ -13,6 +13,17 @@ admin.initializeApp({
     databaseURL: "https://onyxnotify.firebaseio.com"
 });
 
+var options = {
+    token: {
+        key: "path/to/APNsAuthKey_XXXXXXXXXX.p8",
+        keyId: "key-id",
+        teamId: "developer-team-id"
+    },
+    production: false
+};
+
+var apnProvider = new apn.Provider(options);
+
 var router = express.Router();
 const secretkey = 'qwerty';
 
@@ -77,12 +88,16 @@ exports.postfile = function(req, res) {
 
         // GRAB THE ENCRPYTED IMAGE
 
-
         //CREATE THE NOTIFICATION SCHEMA
         const notification = new notify({
             encrypted: ciphertext,
             filename: fileinstance.filename,
         })
+
+        const option = {
+            priority: "high",
+            timetolive: 24 * 60 * 60
+        }
 
         //CHOOSE THE PERSON WHO HAVE THE MOST MEMORY AVAILABLE WITH THE PYTHON SCRIPT
 
@@ -100,12 +115,12 @@ exports.postfile = function(req, res) {
 
                 //NOW DO NOTIFICATIONS IN CALLBACK, THEN ADD THE FILE INSTANCE WE MADE ABOVE TO IT
 
-                admin.messaging().sendToDevice(notifytoken, payload)
+                admin.messaging().sendToDevice(notifytoken, payload, option)
                     .then(function(response) {
-                        console.log("Successfully sent message:", response);
+                        console.log("Successfully sent message:", response.error);
                         // now do the other shit
 
-                        uploadfileobject(notifytoken, fileinstance)
+                        // uploadfileobject(notifytoken, fileinstance)
 
                     })
                     .catch(function(error) {
