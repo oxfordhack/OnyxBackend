@@ -69,14 +69,9 @@ exports.postfile = function(req, res) {
 
         const filelocationref = req.body['filename']
 
-        const jsonPayload = {
-            "notification":{
-                "title": " ",
-                "body": " ",
-                "mutable_content": "true"
-            },
-            "data" : {
-                "payload" : filelocationref
+        var payload = {
+            data: {
+                filename: filelocationref
             }
         };
 
