@@ -7,6 +7,8 @@ var notify = require('../modesl/notificationmodel');
 const crypto = require('crypto-js');
 var admin = require("firebase-admin");
 var serviceAccount = require("../onyxnotify-firebase-adminsdk-o9vvb-22b29ebf32.json");
+var gcm = require('node-gcm');
+
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -65,7 +67,7 @@ exports.postfile = function(req, res) {
     if(req.err){
         return res.status(500).json({'error': 'something was wrong with the body'})
     }else {
-        console.log(req.body)
+        // console.log(req.body)
         //FILE INSTANCE
 
         var imagebinary = req.body['base64StrImage']
@@ -85,11 +87,6 @@ exports.postfile = function(req, res) {
             encrypted: ciphertext,
             filename: fileinstance.filename,
         })
-
-        const option = {
-            priority: "high",
-            timetolive: 24 * 60 * 60
-        }
 
         const filelocationref = req.body['filename']
 
@@ -111,6 +108,10 @@ exports.postfile = function(req, res) {
                         filename: filelocationref
                     }
                 };
+                var option = {
+                    priority: "high",
+                    timetolive: 24 * 60 * 60
+                }
 
                 console.log(payload)
 
