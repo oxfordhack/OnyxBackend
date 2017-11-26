@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95815024-6785-4f71-acd9-e8cb6f821d5d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manifest.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/onyx-2d4dc-firebase-adminsdk-4gtfl-3b41ca92d7.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/AnalyseData2.py" afterPath="$PROJECT_DIR$/controllers/AnalyseData2.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/postercontroller.js" afterPath="$PROJECT_DIR$/controllers/postercontroller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modesl/postermodel.js" afterPath="$PROJECT_DIR$/modesl/postermodel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/poster.js" afterPath="$PROJECT_DIR$/routes/poster.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,8 +21,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="403">
+              <caret line="28" column="21" lean-forward="false" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -35,8 +31,8 @@
       <file leaf-file-name="postercontroller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/postercontroller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+            <state relative-caret-position="385">
+              <caret line="124" column="76" lean-forward="true" selection-start-line="124" selection-start-column="76" selection-end-line="124" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -56,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/routes/poster.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+              <caret line="7" column="47" lean-forward="false" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -82,13 +78,13 @@
         <option value="$PROJECT_DIR$/controllers/storercontroller.js" />
         <option value="$PROJECT_DIR$/modesl/postinitialmodel.js" />
         <option value="$PROJECT_DIR$/modesl/filesmodel.js" />
-        <option value="$PROJECT_DIR$/routes/poster.js" />
         <option value="$PROJECT_DIR$/modesl/storermodel.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/modesl/notificationmodel.js" />
         <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/onyx-2d4dc-firebase-adminsdk-4gtfl-3b41ca92d7.json" />
         <option value="$PROJECT_DIR$/modesl/postermodel.js" />
+        <option value="$PROJECT_DIR$/routes/poster.js" />
         <option value="$PROJECT_DIR$/controllers/postercontroller.js" />
       </list>
     </option>
@@ -142,6 +138,11 @@
               <item name="OnyxBackend" type="462c0819:PsiDirectoryNode" />
               <item name="modesl" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="OnyxBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnyxBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -187,12 +188,12 @@
       <updated>1511610336723</updated>
       <workItem from="1511610338310" duration="251000" />
       <workItem from="1511611464623" duration="5963000" />
-      <workItem from="1511624052657" duration="25869000" />
+      <workItem from="1511624052657" duration="27018000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32083000" />
+    <option name="totallyTimeSpent" value="33232000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="6" y="23" width="1414" height="837" extended-state="0" />
@@ -324,14 +325,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/poster.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/onyx-2d4dc-firebase-adminsdk-4gtfl-3b41ca92d7.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -366,16 +359,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="403">
+          <caret line="28" column="21" lean-forward="false" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/poster.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="47" lean-forward="false" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/postercontroller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+        <state relative-caret-position="385">
+          <caret line="124" column="76" lean-forward="true" selection-start-line="124" selection-start-column="76" selection-end-line="124" selection-end-column="76" />
           <folding />
         </state>
       </provider>

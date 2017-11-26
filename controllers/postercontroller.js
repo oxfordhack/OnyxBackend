@@ -16,7 +16,7 @@ admin.initializeApp({
 var router = express.Router();
 const secretkey = 'qwerty';
 
-exports.checkposter = function(req, res) {
+exports.create = function(req, res) {
     if(req.err){
         return res.status(500).json({'error': 'something was wrong with the body'})
     }else{
@@ -25,9 +25,22 @@ exports.checkposter = function(req, res) {
             if(err){
                 console.log({'error': err.message})
             }else{
-                if(body.files.length == 0){
-                    return res.json({'error': true})
-                }
+                return res.json({'message': 'successfully sign up user'})
+            }
+        })
+    }
+}
+
+exports.signin = function(req, res){
+    if(req.err){
+        return res.status(500).json({'error': 'something was wrong with the body'})
+    }else{
+        const uid = req.body['uid'];
+        posters.find({'uid': uid}, function(err, body){
+            if(body.files.length == 0){
+                return res.json({'error': true})
+            }else{
+                return res.json({'body': body.files})
             }
         })
     }
@@ -91,7 +104,7 @@ exports.postfile = function(req, res) {
         });
 
         //UPLOAD NEW FILE TO FILESCHEMA THEN ADD THE FILEID TO STORER SCHEMA AND FINALLY
-        // SAVE THE NAME
+        //
         function uploadfileobject(token, obj){
             filenames.save(obj, function(err, body){
                 if(err){
@@ -104,17 +117,26 @@ exports.postfile = function(req, res) {
                         }
                         body.files.push(fileid)
                         body.save(function(err, body){
-
+                            //NOW ADD THE FILENAME TO THE USER SCHEMA
+                            posters.find({'uid': uid}, function(err, body){
+                                if(err){
+                                    return res.json({'error': err.message})
+                                }else{
+                                    body.files.push(req.body['filename'], function(err, body){
+                                        if(err){
+                                            return res.json({'error': err.message})
+                                        }else{
+                                            const message = 'successfully added ' + req.body['filename'] + ' to onyx drive'
+                                            return res.status(200).json({'message': message, 'body': body.files})
+                                        }
+                                    })
+                                }
+                            })
                         })
                     })
                 }
             })
         }
-
-        function updateuserwithnewfile() {
-
-        }
-
 
 // Decrypt
 //         var bytes  = crypto.AES.decrypt(ciphertext.toString(), secretkey);
