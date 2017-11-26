@@ -117,7 +117,7 @@ exports.postfile = function(req, res) {
 
                 admin.messaging().sendToDevice(notifytoken, payload, option)
                     .then(function(response) {
-                        console.log("Successfully sent message:", response.error);
+                        console.log("Successfully sent message:", response);
                         // now do the other shit
 
                         // uploadfileobject(notifytoken, fileinstance)
