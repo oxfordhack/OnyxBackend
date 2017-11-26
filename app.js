@@ -9,7 +9,6 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var poster = require('./routes/poster');
 
-const port = 3000
 var app = express();
 
 // view engine setup
@@ -49,6 +48,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(port);
+app.listen(4242, '0.0.0.0');
 
 module.exports = app;

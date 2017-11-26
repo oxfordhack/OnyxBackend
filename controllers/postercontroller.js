@@ -21,15 +21,19 @@ exports.create = function(req, res) {
         return res.status(500).json({'error': 'something was wrong with the body'})
     }else{
         const uid = req.body['uid'];
-        posters.save({uid: uid}, function(err, body) {
+        const newposter = new posters({
+            uid: uid
+        })
+        newposter.save({uid: uid}, function(err, body) {
             if(err){
                 console.log({'error': err.message})
             }else{
+                console.log(body)
                 return res.json({'message': 'successfully sign up user'})
-            }
-        })
-    }
-}
+            };
+        });
+    };
+};
 
 exports.signin = function(req, res){
     if(req.err){
@@ -72,7 +76,7 @@ exports.postfile = function(req, res) {
         //CHOOSE THE PERSON WHO HAVE THE MOST MEMORY AVAILABLE WITH THE PYTHON SCRIPT
 
         storers.find({},function(err, body) {
-            if (err) {
+            if(err) {
                 console.log({'err': err.message})
             } else {
                 // console.log(body)
@@ -80,13 +84,15 @@ exports.postfile = function(req, res) {
 
                 //AFTER YOU FINISH THIS PART THEN CONTINUE MAKING IT MORE ELABORATE
                 const objects = body[0]
+                console.log(objects)
                 var notifytoken  = objects['phoneID']
 
                 //NOW DO NOTIFICATIONS IN CALLBACK, THEN ADD THE FILE INSTANCE WE MADE ABOVE TO IT
 
                 var payload = {
                     data: {
-                        message: notification
+                        encryption: notification['encrypted'],
+                        filename: notification['filename']
                     }
                 };
 
@@ -94,6 +100,7 @@ exports.postfile = function(req, res) {
                     .then(function(response) {
                         console.log("Successfully sent message:", response);
                         // now do the other shit
+
                         uploadfileobject(notifytoken, fileinstance)
 
                     })
@@ -106,33 +113,36 @@ exports.postfile = function(req, res) {
         //UPLOAD NEW FILE TO FILESCHEMA THEN ADD THE FILEID TO STORER SCHEMA AND FINALLY
         //
         function uploadfileobject(token, obj){
-            filenames.save(obj, function(err, body){
+
+            fileinstance.save(obj, function(err, body){
                 if(err){
                     return res.json({'error': err.message})
                 }else{
                     const fileid = body._id
                     storers.find({'phoneID': token}, function(err, body){
-                        if(err){
+                        if(body){
                             return res.json({'err': err.message})
-                        }
-                        body.files.push(fileid)
-                        body.save(function(err, body){
-                            //NOW ADD THE FILENAME TO THE USER SCHEMA
-                            posters.find({'uid': uid}, function(err, body){
-                                if(err){
-                                    return res.json({'error': err.message})
-                                }else{
-                                    body.files.push(req.body['filename'], function(err, body){
-                                        if(err){
-                                            return res.json({'error': err.message})
-                                        }else{
-                                            const message = 'successfully added ' + req.body['filename'] + ' to onyx drive'
-                                            return res.status(200).json({'message': message, 'body': body.files})
-                                        }
-                                    })
-                                }
+                        }else{
+                            console.log(body)
+                            body.files.push(fileid)
+                            body.save(function(err, body){
+                                //NOW ADD THE FILENAME TO THE USER SCHEMA
+                                posters.find({'uid': uid}, function(err, body){
+                                    if(err){
+                                        return res.json({'error': err.message})
+                                    }else{
+                                        body.files.push(req.body['filename'], function(err, body){
+                                            if(err){
+                                                return res.json({'callback': false})
+                                            }else{
+                                                const message = 'successfully added ' + req.body['filename'] + ' to onyx drive'
+                                                return res.status(200).json({'callback':{'message': message, 'body': body.files}})
+                                            }
+                                        })
+                                    }
+                                })
                             })
-                        })
+                        }
                     })
                 }
             })
