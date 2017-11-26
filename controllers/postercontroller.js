@@ -100,7 +100,7 @@ exports.postfile = function(req, res) {
 
                 //NOW DO NOTIFICATIONS IN CALLBACK, THEN ADD THE FILE INSTANCE WE MADE ABOVE TO IT
 
-                admin.messaging().sendToDevice(notifytoken, jsonPayload)
+                admin.messaging().sendToDevice(notifytoken, payload)
                     .then(function(response) {
                         console.log("Successfully sent message:", response);
                         // now do the other shit
